@@ -51,17 +51,17 @@ public class CompanyImpl implements Company {
     }
 
     @Override
+    public int quantity() {
+        return size;
+    }
+
+    @Override
     public double totalSalary() {
         double res = 0;
         for (int i = 0; i < size; i++) {
             res += employees[i].calcSalary();
         }
         return res;
-    }
-
-    @Override
-    public int quantity() {
-        return size;
     }
 
     @Override
@@ -78,7 +78,6 @@ public class CompanyImpl implements Company {
 
     @Override
     public void printEmployees() {
-        System.out.println(Company.COUNTRY);
         for (int i = 0; i < size; i++) {
             System.out.println(employees[i]);
         }
@@ -91,8 +90,13 @@ public class CompanyImpl implements Company {
 
     @Override
     public Employee[] findEmployeesSalaryRange(int minSalary, int maxSalary) {
-//        Predicate<Employee> predicate = new SalaryPredicate(minSalary, maxSalary);
-        return findEmployeesByPredicate(e -> e.calcSalary() >= minSalary && e.calcSalary() < maxSalary);
+        Predicate<Employee> predicate = new Predicate<>() {
+            @Override
+            public boolean test(Employee employee) {
+                return employee.calcSalary() >= minSalary && employee.calcSalary() < maxSalary;
+            }
+        };
+        return findEmployeesByPredicate(predicate);
     }
 
     private Employee[] findEmployeesByPredicate(Predicate<Employee> predicate) {
@@ -108,7 +112,7 @@ public class CompanyImpl implements Company {
                 res[j++] = employees[i];
             }
         }
+
         return res;
     }
-
 }

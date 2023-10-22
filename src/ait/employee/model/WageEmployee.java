@@ -16,10 +16,9 @@ public class WageEmployee extends Employee {
         this.wage = wage;
     }
 
-    @Override
     public double calcSalary() {
-        double salary = wage * hours;
-        return ensureSalary(salary);
+        double salary = hours * wage;
+        return salary;
     }
 
 }

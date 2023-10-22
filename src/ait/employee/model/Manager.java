@@ -22,7 +22,6 @@ public class Manager extends Employee {
         return grade;
     }
 
-
     public void setGrade(int grade) {
         this.grade = grade;
     }
@@ -30,7 +29,7 @@ public class Manager extends Employee {
     @Override
     public double calcSalary() {
         double salary = baseSalary + grade * hours;
-        return ensureSalary(salary);
+        return salary;
     }
 
 }

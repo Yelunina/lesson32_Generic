@@ -1,6 +1,6 @@
 package ait.generic.utils;
 
-public class JsonWrapper2<T extends Number> {
+public class JsonWrapper2 <T extends Number> {
     private T value;
 
     public JsonWrapper2(T value) {

@@ -11,9 +11,9 @@ public interface Company {
 
     Employee findEmployee(int id);
 
-    double totalSalary();
-
     int quantity();
+
+    double totalSalary();
 
     default double avgSalary() {
         return totalSalary() / quantity();

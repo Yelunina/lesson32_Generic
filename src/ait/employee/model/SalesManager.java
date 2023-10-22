@@ -26,10 +26,9 @@ public class SalesManager extends Employee {
         this.percent = percent;
     }
 
-    @Override
     public double calcSalary() {
         double salary = salesValue * percent;
-        return ensureSalary(salary);
+        return salary;
     }
 
 }
